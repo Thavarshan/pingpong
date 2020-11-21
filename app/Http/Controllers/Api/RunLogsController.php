@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Models\Birthday;
+use App\Models\Run;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class BirthdayLogsController extends Controller
+class RunLogsController extends Controller
 {
     /**
      * Store a newly created resource in storage.
@@ -17,12 +17,7 @@ class BirthdayLogsController extends Controller
      */
     public function store(Request $request)
     {
-        $students = $request->all();
-
-        Birthday::create([
-            'students' => $students,
-            'count' => count($students),
-        ]);
+        Run::create($request->all());
 
         return response([], 201);
     }

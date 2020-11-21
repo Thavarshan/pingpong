@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBirthdaysTable extends Migration
+class CreateRunsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,13 @@ class CreateBirthdaysTable extends Migration
      */
     public function up()
     {
-        Schema::create('birthdays', function (Blueprint $table) {
+        Schema::create('runs', function (Blueprint $table) {
             $table->id();
-            $table->json('students');
-            $table->unsignedInteger('count')->default(0);
+            $table->datetime('init_time');
+            $table->json('students')->nullable();
+            $table->boolean('status')->nullable();
+            $table->text('context')->nullable();
+            $table->unsignedInteger('student_count')->default(0);
             $table->timestamps();
         });
     }

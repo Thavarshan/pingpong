@@ -5,6 +5,7 @@ namespace Tests\Unit\Middleware;
 use Tests\TestCase;
 use App\Models\Token;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Hash;
 
 class TrustedAppsTest extends TestCase
 {
@@ -13,11 +14,17 @@ class TrustedAppsTest extends TestCase
     {
         $this->withoutExceptionHandling();
 
+        $tokenString = Str::random(21);
+
         $token = Token::create([
-            'token' => $tokenString = Str::random(21),
+            'name' => 'ext-app',
+            'token' => Hash::make($tokenString),
         ]);
 
-        $response = $this->get('/api/ping', ['Authorization' => 'Bearer ' . $tokenString]);
+        $response = $this->get('/api/ping', [
+            'Authorization' => 'Bearer ' . $tokenString,
+            'X-App-Name' => 'ext-app',
+        ]);
 
         $response->assertStatus(200);
         $this->assertEquals('ping', $response->getContent());

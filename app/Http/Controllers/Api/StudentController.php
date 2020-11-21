@@ -14,6 +14,6 @@ class StudentController extends Controller
      */
     public function index()
     {
-        return Student::all();
+        return response(Student::all(), 200);
     }
 }

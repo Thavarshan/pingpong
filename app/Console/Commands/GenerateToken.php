@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use App\Models\Token;
 use Illuminate\Support\Str;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Hash;
 
 class GenerateToken extends Command
 {
@@ -13,7 +14,7 @@ class GenerateToken extends Command
      *
      * @var string
      */
-    protected $signature = 'token:generate';
+    protected $signature = 'token:generate {--name=}';
 
     /**
      * The console command description.
@@ -39,7 +40,14 @@ class GenerateToken extends Command
      */
     public function handle()
     {
-        $this->line(Token::create(['token' => Str::random(21)])->token);
+        $tokenString = Str::random(21);
+
+        Token::create([
+            'name' => $this->option('name'),
+            'token' => Hash::make($tokenString),
+        ]);
+
+        $this->line($tokenString);
 
         return 0;
     }
