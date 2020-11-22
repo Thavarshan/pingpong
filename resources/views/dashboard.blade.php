@@ -28,8 +28,8 @@
 
                                         <ul class="mt-2">
                                             @foreach ($log->students as $student)
-                                                <li>
-                                                    <a class="text-blue-500 hover:text-blue-600" href="mailto:{{ $student }}">{{ $student }}</a>
+                                                <li class="text-sm">
+                                                    <span class="text-blue-500">{{ $student }}</span>
                                                 </li>
                                             @endforeach
                                         </ul>

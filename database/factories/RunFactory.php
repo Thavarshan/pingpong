@@ -30,9 +30,9 @@ class RunFactory extends Factory
         return [
             'init_time' => now()->subDays(rand(0, 5)),
             'students' => [
-                $this->faker->email,
-                $this->faker->email,
-                $this->faker->email,
+                $this->faker->name,
+                $this->faker->name,
+                $this->faker->name,
             ],
             'status' => $status,
             'context' => $context,

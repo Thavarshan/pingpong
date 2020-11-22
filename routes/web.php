@@ -9,7 +9,7 @@ Route::get('/', function () {
 
 Route::get('/dashboard', function () {
     return view('dashboard', [
-        'logs' => Run::paginate(10),
+        'logs' => Run::latest()->paginate(10),
     ]);
 })->middleware(['auth'])->name('dashboard');
 
