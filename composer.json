@@ -1,10 +1,10 @@
 {
-    "name": "laravel/laravel",
+    "name": "thavarshan/batch-95",
     "type": "project",
-    "description": "The Laravel Framework.",
+    "description": "Birthdays API and Logger.",
     "keywords": [
-        "framework",
-        "laravel"
+        "birthdays",
+        "logger"
     ],
     "license": "MIT",
     "require": {
@@ -12,6 +12,7 @@
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
+        "laravel/breeze": "^0.0.5",
         "laravel/framework": "^8.12",
         "laravel/tinker": "^2.5"
     },

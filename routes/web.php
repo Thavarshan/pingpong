@@ -1,7 +1,16 @@
 <?php
 
+use App\Models\Run;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return 'App working!';
+    return view('welcome');
 });
+
+Route::get('/dashboard', function () {
+    return view('dashboard', [
+        'logs' => Run::paginate(10),
+    ]);
+})->middleware(['auth'])->name('dashboard');
+
+require __DIR__ . '/auth.php';
