@@ -62,7 +62,7 @@ jobs:
       - name: Migrate database
         run: |
           mysql --version
-          php artisan migrate:fresh --seed
+          php artisan migrate:fresh
 
       - name: Cache yarn dependencies
         uses: actions/cache@v2.1.1
