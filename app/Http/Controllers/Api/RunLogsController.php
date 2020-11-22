@@ -17,7 +17,9 @@ class RunLogsController extends Controller
      */
     public function store(Request $request)
     {
-        Run::create($request->all());
+        Run::create($request->only([
+            'init_time', 'students', 'status', 'context',
+        ]));
 
         return response([], 201);
     }

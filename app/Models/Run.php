@@ -23,7 +23,25 @@ class Run extends Model
      */
     protected $casts = [
         'students' => 'array',
-        'status' => 'bool',
+        'status' => 'boolean',
         'init_time' => 'datetime',
     ];
+
+    /**
+     * Bootstrap the model and its traits.
+     *
+     * @return void
+     */
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($run) {
+            $run->student_count = count(
+                is_array($run->students)
+                    ? $run->students
+                    : json_decode($run->students, true)
+            );
+        });
+    }
 }
