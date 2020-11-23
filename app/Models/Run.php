@@ -37,11 +37,11 @@ class Run extends Model
         parent::boot();
 
         static::creating(function ($run) {
-            $run->student_count = count(
-                is_array($run->students)
-                    ? $run->students
-                    : json_decode($run->students, true)
-            );
+            $run->students = is_array($run->students)
+                ? $run->students
+                : json_decode($run->students, true);
+
+            $run->student_count = count($run->students);
         });
     }
 }

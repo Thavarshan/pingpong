@@ -26,13 +26,19 @@
                                     @if ($log->status)
                                         <span class="text-xs text-gray-600">Emails sent to</span>
 
-                                        <ul class="mt-2">
-                                            @foreach ($log->students as $student)
-                                                <li class="text-sm">
-                                                    <span class="text-blue-500">{{ $student }}</span>
-                                                </li>
-                                            @endforeach
-                                        </ul>
+                                        @if ($log->students === [])
+                                            <div class="text-gray-700">
+                                                No one.
+                                            </div>
+                                        @else
+                                            <ul class="mt-2">
+                                                @foreach ($log->students as $student)
+                                                    <li class="text-sm">
+                                                        <span class="text-blue-500">{{ $student }}</span>
+                                                    </li>
+                                                @endforeach
+                                            </ul>
+                                        @endif
                                     @else
                                         <p class="text-gray-600">
                                             {{ $log->context }}
@@ -43,7 +49,7 @@
 
                             <div class="mt-4">
                                 <span class="text-xs text-gray-600">
-                                    {{ 'Last ran ' . $log->init_time->diffForHumans() }}
+                                    {{ 'Started ' . $log->init_time->format('F j, Y - h:i a') }}
                                 </span>
                             </div>
                         </div>
