@@ -2,6 +2,7 @@
 
 namespace Tests\Unit\Api;
 
+use App\Models\Run;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 
@@ -12,15 +13,14 @@ class RunLogApiTest extends TestCase
     /** @test */
     public function post_app_run_log_details()
     {
-        $response = $this->post('/api/log/run', $attributes = [
+        $this->post('/api/log/run', $attributes = [
             'students' => '["rand@exmpl.com", "rand0@exmpl.com"]',
-            'init_time' => now(),
+            'init_time' => now()->format('Y-m-d H:i:s'),
             'status' => 1,
             'context' => null,
             'student_count' => 2,
-        ]);
+        ])->assertStatus(201);
 
-        $response->assertStatus(201);
-        $this->assertDatabaseHas('runs', $attributes);
+        $this->assertCount(1, Run::all());
     }
 }

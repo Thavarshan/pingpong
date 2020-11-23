@@ -17,6 +17,7 @@ class StudentDetailsApiTest extends TestCase
 
         $response = $this->get('/api/students');
 
-        $this->assertEquals($students->toArray(), $response->json());
+        $response->assertStatus(200)
+            ->assertJson($students->toArray());
     }
 }
