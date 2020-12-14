@@ -18,8 +18,8 @@ class DatabaseSeeder extends Seeder
             DefaultUserSeeder::class,
         ]);
 
-        // if (app()->isLocal()) {
-        //     $this->call([RunLogsSeeder::class]);
-        // }
+        if (app()->isLocal()) {
+            $this->call([RunLogsSeeder::class]);
+        }
     }
 }
