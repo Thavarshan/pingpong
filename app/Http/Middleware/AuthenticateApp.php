@@ -48,8 +48,12 @@ class AuthenticateApp
      *
      * @return string|null
      */
-    protected function getAppToken(string $name)
+    protected function getAppToken(?string $name = null)
     {
+        if (is_null($name)) {
+            return $name;
+        }
+
         return optional(
             Token::whereName($name)->first(),
             fn ($app) => $app->token
