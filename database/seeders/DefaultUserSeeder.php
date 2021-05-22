@@ -14,6 +14,6 @@ class DefaultUserSeeder extends Seeder
      */
     public function run()
     {
-        User::create(config('defaults.user'));
+        User::create(config('defaults.users.credentials'));
     }
 }

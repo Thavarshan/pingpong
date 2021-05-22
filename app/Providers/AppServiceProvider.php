@@ -2,8 +2,6 @@
 
 namespace App\Providers;
 
-use App\Actions\DeleteLog;
-use App\Contracts\DeletesLogs;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -15,7 +13,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->singleton(DeletesLogs::class, DeleteLog::class);
+        //
     }
 
     /**
@@ -25,5 +23,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        //
     }
 }
