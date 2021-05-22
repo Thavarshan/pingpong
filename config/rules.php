@@ -71,4 +71,14 @@ return [
             'different:current_password',
         ],
     ],
+
+    /*
+     * User Account Password Update Validation Rules.
+     */
+    'run' => [
+        'app_name' => ['required', 'string', 'max:255'],
+        'init_time' => ['required', 'datetime'],
+        'status' => ['nullable'],
+        'context' => ['nullable', 'string', 'max:255'],
+    ],
 ];
