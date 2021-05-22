@@ -13,7 +13,7 @@ class AccessContcatsListTest extends TestCase
     public function testAuthorizedAppsCanAccessContactsList()
     {
         $user = create(User::class);
-        $token = $user->createToken('BirthdaysApp');
+        $token = $user->createToken('Birthdays App', ['read']);
 
         $response = $this->getJson('/api/contacts', [
             'Authorization' => "Bearer {$token->plainTextToken}",

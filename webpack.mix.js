@@ -9,7 +9,7 @@ mix.js('resources/js/app.js', 'public/js')
         require('autoprefixer'),
     ])
     .alias({ '@': path.join(__dirname, 'resources/js') })
-    .browserSync('preflight.test');
+    .browserSync('birthdays.test');
 
 if (mix.inProduction()) {
     mix.version();

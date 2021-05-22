@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
@@ -34,11 +35,16 @@ class Run extends Model
      */
     public function contacts(): BelongsToMany
     {
-        return $this->belongsToMany(
-            Contact::class,
-            'contacts',
-            'contact_id',
-            'run_id'
-        );
+        return $this->belongsToMany(Contact::class);
+    }
+
+    /**
+     * Get the user the run belongs to.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'user_id');
     }
 }

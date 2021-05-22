@@ -73,12 +73,22 @@ return [
     ],
 
     /*
-     * User Account Password Update Validation Rules.
+     * Application Run Log Validation Rules.
      */
     'run' => [
         'app_name' => ['required', 'string', 'max:255'],
-        'init_time' => ['required', 'datetime'],
+        'init_time' => ['required', 'date'],
         'status' => ['nullable'],
         'context' => ['nullable', 'string', 'max:255'],
+    ],
+
+    /*
+     * Contact Validation Rules.
+     */
+    'contact' => [
+        'name' => ['required', 'string', 'max:255'],
+        'email' => ['required', 'string', 'email'],
+        'phone' => ['nullable', 'string', 'regex:/(07)[0-9]{8}/'],
+        'birthday' => ['required', 'date'],
     ],
 ];

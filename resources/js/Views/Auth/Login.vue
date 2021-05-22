@@ -7,8 +7,8 @@
         <template #right>
             <div class="max-w-sm">
                 <div>
-                    <div class="mb-6 block md:hidden">
-                        <logo :title="config('app.name')" classes="h-16 w-16 text-blue-500"></logo>
+                    <div class="mb-6 block lg:hidden">
+                        <logo :title="config('app.name')" classes="h-16 w-16"></logo>
                     </div>
 
                     <h4 class="mt-6 font-semibold text-xl text-gray-800">Login to your account</h4>

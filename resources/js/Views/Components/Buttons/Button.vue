@@ -44,7 +44,7 @@ export default {
     computed: {
         colors() {
             if (this.mode === 'primary') {
-                return 'text-white hover:text-white focus:text-white active:text-white bg-blue-500 hover:bg-blue-600 focus:bg-blue-600 active:bg-blue-600';
+                return 'text-white hover:text-white focus:text-white active:text-white bg-gray-700 hover:bg-gray-800 focus:bg-gray-800 active:bg-gray-800';
             } else if (this.mode === 'danger') {
                 return 'text-white hover:text-white focus:text-white active:text-white bg-red-500 hover:bg-red-600 focus:bg-red-600 active:bg-red-600';
             } else {

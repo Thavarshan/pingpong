@@ -2,8 +2,8 @@
 
 namespace App\Http\Responses;
 
-use Cratespace\Sentinel\Http\Responses\Response;
 use Illuminate\Contracts\Support\Responsable;
+use Cratespace\Sentinel\Http\Responses\Response;
 
 class ContactResponse extends Response implements Responsable
 {
@@ -16,6 +16,8 @@ class ContactResponse extends Response implements Responsable
      */
     public function toResponse($request)
     {
-        return $request->expectsJson() ? $this->json() : $this->redirectTo('/');
+        return $request->expectsJson()
+            ? $this->json($this->content)
+            : $this->redirectToRoute('contacts');
     }
 }

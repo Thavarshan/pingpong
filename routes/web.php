@@ -4,7 +4,7 @@ use Inertia\Inertia;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
 
-Route::get('/', fn () => Inertia::render('Welcome/Show'))->name('welcome');
+Route::get('/', fn () => redirect('/login'))->name('welcome');
 
 Route::group([
     'middleware' => ['auth:sentinel', 'verified'],

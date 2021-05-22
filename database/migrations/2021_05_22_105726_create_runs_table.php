@@ -16,6 +16,7 @@ class CreateRunsTable extends Migration
         Schema::create('runs', function (Blueprint $table) {
             $table->id();
             $table->string('app_name');
+            $table->foreignId('user_id')->constrained('users', 'id');
             $table->boolean('status')->nullable();
             $table->text('context')->nullable();
             $table->datetime('init_time');

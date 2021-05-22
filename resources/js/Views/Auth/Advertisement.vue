@@ -1,7 +1,7 @@
 <template>
-    <div class="bg-gradient-to-br from-blue-700 to-blue-500 h-full p-10">
+    <div class="bg-gray-700 h-full p-10">
         <div>
-            <logo :title="config('app.name')" classes="h-16 w-16 text-blue-500"></logo>
+            <logo :title="config('app.name')" classes="h-16 w-16"></logo>
         </div>
 
         <div class="mt-6 max-w-xs">

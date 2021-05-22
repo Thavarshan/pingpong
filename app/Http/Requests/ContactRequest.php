@@ -13,7 +13,7 @@ class ContactRequest extends Request
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,6 +23,6 @@ class ContactRequest extends Request
      */
     public function rules(): array
     {
-        return [];
+        return $this->getRulesFor('contact');
     }
 }

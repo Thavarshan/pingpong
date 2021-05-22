@@ -2,21 +2,29 @@
     <div class="min-h-screen min-w-full overflow-x-hidden">
         <!-- Main Header Area -->
         <header>
-            <navbar class="bg-blue-800">
+            <navbar class="bg-gray-800">
                 <template #logo>
-                    <logo classes="h-8 w-auto text-blue-500" :title="config('app.name')"></logo>
+                    <logo classes="h-8 w-8" :title="config('app.name')"></logo>
                 </template>
 
                 <template #linksleft>
-                    <navbar-link :href="route('home')" :active="route().current('home')" class="text-white bg-blue-900 hover:bg-blue-900 focus:bg-blue-900">
+                    <navbar-link :href="route('home')" :active="route().current('home')" class="text-white bg-gray-900 hover:bg-gray-900 focus:bg-gray-900">
                         Home
+                    </navbar-link>
+
+                    <navbar-link :href="route('contacts.index')" :active="route().current('contacts.index')" class="text-white bg-gray-900 hover:bg-gray-900 focus:bg-gray-900">
+                        Contacts
+                    </navbar-link>
+
+                    <navbar-link :href="route('api-tokens.index')" :active="route().current('api-tokens.index')" class="text-white bg-gray-900 hover:bg-gray-900 focus:bg-gray-900">
+                        Tokens
                     </navbar-link>
                 </template>
 
                 <template #linksright>
                     <dropdown align="right">
                         <template #trigger>
-                            <button class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-blue-300  transition duration-150 ease-in-out">
+                            <button class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300  transition duration-150 ease-in-out">
                                 <img :src="$page.props.user.profile_photo_url" class="rounded-full object-cover w-8 h-8" :alt="$page.props.user.name"/>
                             </button>
                         </template>

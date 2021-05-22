@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Notifications\Notifiable;
 use Cratespace\Sentinel\Models\Traits\HasApiTokens;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Cratespace\Sentinel\Models\Traits\HasProfilePhoto;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -72,4 +73,24 @@ class User extends Authenticatable
         'sessions',
         'two_factor_enabled',
     ];
+
+    /**
+     * Get all contacts the user has.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function contacts(): HasMany
+    {
+        return $this->hasMany(Contact::class);
+    }
+
+    /**
+     * Get all runs the user has.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function runs(): HasMany
+    {
+        return $this->hasMany(Run::class);
+    }
 }

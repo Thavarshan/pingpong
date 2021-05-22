@@ -26,6 +26,8 @@
         "moment": "^2.29.1",
         "postcss": "^8.1.14",
         "postcss-import": "^14.0.1",
+        "simplebar": "^5.3.3",
+        "simplebar-vue": "^1.6.3",
         "tailwindcss": "^2.1.2",
         "vue": "^3.0.11",
         "vue-loader": "^16.2.0"

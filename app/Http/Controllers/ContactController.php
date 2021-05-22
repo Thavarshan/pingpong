@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Inertia\Inertia;
 use App\Models\Contact;
+use Illuminate\Http\Request;
 use App\Http\Requests\ContactRequest;
 use App\Http\Responses\ContactResponse;
 
@@ -14,9 +15,17 @@ class ContactController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return Inertia::render('Contacts/Index');
+        $contacts = Contact::where('user_id', $request->user()->id)
+            ->orderByRaw('DATE_FORMAT(birthday, "%m-%d")')
+            ->paginate();
+
+        if ($request->expectsJson()) {
+            return response()->json($contacts);
+        }
+
+        return Inertia::render('Contacts/Index', compact('contacts'));
     }
 
     /**
@@ -38,7 +47,9 @@ class ContactController extends Controller
      */
     public function store(ContactRequest $request)
     {
-        $contact = Contact::create($request->validated());
+        $contact = $request->user()
+            ->contacts()
+            ->create($request->validated());
 
         return ContactResponse::dispatch($contact);
     }

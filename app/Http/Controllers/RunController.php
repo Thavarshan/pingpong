@@ -29,15 +29,21 @@ class RunController extends Controller
      */
     public function store(RunRequest $request)
     {
-        $run = Run::create($request->validated());
+        $run = $request->user()
+            ->runs()
+            ->create($request->validated());
+
+        if (! $request->status) {
+            return RunResponse::dispatch('Failed');
+        }
 
         collect($request->contacts)->each(function ($contact) use ($run) {
-            if ($contact = Contact::whereName($contact)->first()) {
-                $run->contact()->save($contact);
+            if ($contact = Contact::find($contact)) {
+                $run->contacts()->save($contact);
             }
         });
 
-        return RunResponse::dispatch();
+        return RunResponse::dispatch('Logged');
     }
 
     /**

@@ -17,7 +17,7 @@ class RunResponse extends Response implements Responsable
     public function toResponse($request)
     {
         return $request->expectsJson()
-            ? $this->json('Logged', 201)
+            ? $this->json($this->content, 201)
             : $this->redirectTo('/');
     }
 }
