@@ -79,7 +79,7 @@ return [
         'app_name' => ['required', 'string', 'max:255'],
         'init_time' => ['required', 'date'],
         'status' => ['nullable'],
-        'context' => ['nullable', 'string', 'max:255'],
+        'context' => ['nullable', 'string'],
     ],
 
     /*

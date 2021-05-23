@@ -16,7 +16,7 @@ class ContactsSeeder extends Seeder
     public function run()
     {
         $contacts = json_decode(file_get_contents(
-            resource_path('data/contacts.json')
+            resource_path('data/test.json')
         ), true);
 
         $userId = User::whereName('Administrator')->first()->id;
