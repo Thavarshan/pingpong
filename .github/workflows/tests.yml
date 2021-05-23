@@ -1,0 +1,168 @@
+name: Preflight Checks
+
+on:
+  push:
+  pull_request:
+  schedule:
+    - cron: '0 0 * * SUN'
+
+jobs:
+  linux_tests:
+    name: PHP ${{ matrix.php }} - ${{ matrix.stability }} - Linux
+    runs-on: ubuntu-latest
+
+    services:
+      mysql:
+        image: mysql:5.7
+        env:
+          MYSQL_ALLOW_EMPTY_PASSWORD: yes
+          MYSQL_DATABASE: laravel
+        ports:
+          - 33306:3306
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+    strategy:
+      fail-fast: true
+      matrix:
+        php: [7.4, 8.0]
+        stability: [prefer-stable]
+
+    steps:
+      - name: 🧐 Checkout code
+        uses: actions/checkout@v2.3.3
+
+      - name: 🔥 Setup PHP with pecl extension
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          tools: pecl, php-cs-fixer, phpunit, composer:v2
+          extensions: swoole, fileinfo, gmp, intl, json, mbstring, openssl, dom, curl, libxml, zip, pcntl, pdo, sqlite, pdo_sqlite, gd, dom, redis, memcached
+          coverage: pcov
+
+      - name: 🍭 Use Node JS
+        uses: actions/setup-node@v2.1.4
+        with:
+          node-version: 14.x
+
+      - name: ⛑ Setup problem matchers
+        run: echo "::add-matcher::${{ runner.tool_cache }}/phpunit.json"
+
+      - name: 👍🏼 Verify MySQL connection
+        run: |
+          mysql --version
+          sudo apt-get install -y mysql-client
+          mysql --host 127.0.0.1 --port ${{ job.services.mysql.ports[3306] }} -uroot -e "SHOW DATABASES"
+
+      - name: 📖 Cache composer dependencies
+        uses: actions/cache@v2.1.1
+        with:
+          path: vendor
+          key: composer-${{ hashFiles('composer.lock') }}
+
+      - name: 📦 Install dependencies
+        run: |
+          php --version
+          composer install --no-progress --no-suggest --prefer-dist --optimize-autoloader
+          composer update --${{ matrix.stability }} --prefer-dist --no-interaction --no-progress
+          npm install
+          npm run production
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          CI: true
+
+      - name: 🛫 Boot application
+        run: |
+          cp .env.example .env
+          php artisan key:generate
+          php artisan --version
+
+      - name: 🦅 Migrate database
+        env:
+          DB_PORT: ${{ job.services.mysql.ports[3306] }}
+          DB_USERNAME: root
+        run: |
+          mysql --version
+          php artisan migrate:fresh --seed
+
+      - name: 🧪 Run PHP tests
+        env:
+          DB_PORT: ${{ job.services.mysql.ports[3306] }}
+          DB_USERNAME: root
+        run: php artisan test --parallel
+
+      - name: 📚 Upload artifacts
+        uses: actions/upload-artifact@master
+        if: failure()
+        with:
+          name: Logs
+          path: ./storage/logs
+
+  windows_tests:
+    name: PHP ${{ matrix.php }} - ${{ matrix.stability }} - Windows
+    runs-on: windows-latest
+
+    strategy:
+      fail-fast: true
+      matrix:
+        php: [7.4, 8.0]
+        stability: [prefer-stable]
+
+    steps:
+      - name: ✅ Set git to use LF
+        run: |
+          git config --global core.autocrlf false
+          git config --global core.eol lf
+
+      - name: 🧐 Checkout code
+        uses: actions/checkout@v2.3.3
+
+      - name: 🔥 Setup PHP with pecl extension
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          tools: pecl, php-cs-fixer, phpunit, composer:v2
+          extensions: swoole, fileinfo, gmp, intl, json, mbstring, openssl, dom, curl, libxml, zip, pcntl, pdo, sqlite, pdo_sqlite, gd, dom, redis, memcached
+          coverage: pcov
+
+      - name: 🍭 Use Node JS
+        uses: actions/setup-node@v2.1.4
+        with:
+          node-version: 14.x
+
+      - name: ⛑ Setup problem matchers
+        run: echo "::add-matcher::${{ runner.tool_cache }}/phpunit.json"
+
+      - name: Cache composer dependencies 📖
+        uses: actions/cache@v2.1.1
+        with:
+          path: vendor
+          key: composer-${{ hashFiles('composer.lock') }}
+
+      - name: 📦 Install dependencies
+        run: |
+          php --version
+          composer install --no-progress --no-suggest --prefer-dist --optimize-autoloader
+          composer update --${{ matrix.stability }} --prefer-dist --no-interaction --no-progress
+          npm install
+          npm run production
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          CI: true
+
+      - name: 🛫 Boot application
+        run: |
+          cp .env.example .env
+          php artisan key:generate
+          php artisan --version
+
+      - name: 🧪 Run PHP tests
+        env:
+          DB_CONNECTION: sqlite
+          DB_DATABASE: ':memory:'
+        run: php artisan test --parallel
+
+      - name: 📚 Upload artifacts
+        uses: actions/upload-artifact@master
+        if: failure()
+        with:
+          name: Logs
+          path: ./storage/logs
