@@ -2,23 +2,14 @@
 
 namespace App\Models;
 
-use Illuminate\Notifications\Notifiable;
-use Cratespace\Sentinel\Models\Traits\HasApiTokens;
-use Illuminate\Database\Eloquent\Relations\HasMany;
-use Cratespace\Sentinel\Models\Traits\HasProfilePhoto;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Cratespace\Sentinel\Models\Concerns\InteractsWithSessions;
-use Cratespace\Sentinel\Models\Traits\TwoFactorAuthenticatable;
+use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
-    use HasFactory;
-    use Notifiable;
-    use HasApiTokens;
-    use HasProfilePhoto;
-    use InteractsWithSessions;
-    use TwoFactorAuthenticatable;
+    use HasFactory, Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -28,15 +19,7 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
-        'phone',
         'password',
-        'username',
-        'settings',
-        'address',
-        'locked',
-        'profile_photo_path',
-        'two_factor_secret',
-        'two_factor_recovery_codes',
     ];
 
     /**
@@ -47,8 +30,6 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
-        'two_factor_recovery_codes',
-        'two_factor_secret',
     ];
 
     /**
@@ -58,39 +39,5 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
-        'two_factor_enabled' => 'boolean',
-        'settings' => 'array',
-        'address' => 'array',
     ];
-
-    /**
-     * The accessors to append to the model's array form.
-     *
-     * @var array
-     */
-    protected $appends = [
-        'profile_photo_url',
-        'sessions',
-        'two_factor_enabled',
-    ];
-
-    /**
-     * Get all contacts the user has.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function contacts(): HasMany
-    {
-        return $this->hasMany(Contact::class);
-    }
-
-    /**
-     * Get all runs the user has.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function runs(): HasMany
-    {
-        return $this->hasMany(Run::class);
-    }
 }

@@ -1,24 +1,18 @@
 <?php
 
-use App\Models\Run;
-use Inertia\Inertia;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\RunController;
-use App\Http\Controllers\ContactController;
 
-Route::get('/', fn () => redirect('/login'))->name('welcome');
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
+|
+*/
 
-Route::group([
-    'middleware' => ['auth:sentinel', 'verified'],
-], function (): void {
-    Route::get('/home', function () {
-        return Inertia::render('Business/Home', [
-            'logs' => Run::where('user_id', auth()->id())->with('contacts')->latest()->get(),
-            'contacts' => auth()->user()->contacts->count(),
-            'runs' => auth()->user()->runs->count(),
-        ]);
-    })->name('home');
-
-    Route::resource('runs', RunController::class);
-    Route::resource('contacts', ContactController::class);
+Route::get('/', function () {
+    return view('welcome');
 });

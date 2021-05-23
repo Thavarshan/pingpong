@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Birthdays'),
+    'name' => env('APP_NAME', 'Laravel'),
 
     /*
     |--------------------------------------------------------------------------
@@ -137,7 +137,7 @@ return [
     'providers' => [
 
         /*
-         * Birthdays Framework Service Providers...
+         * Laravel Framework Service Providers...
          */
         Illuminate\Auth\AuthServiceProvider::class,
         Illuminate\Broadcasting\BroadcastServiceProvider::class,
@@ -174,8 +174,6 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-        App\Providers\SentinelServiceProvider::class,
-        App\Providers\PreflightServiceProvider::class,
 
     ],
 
