@@ -13,13 +13,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call([
-            StudentsSeeder::class,
-            DefaultUserSeeder::class,
-        ]);
-
-        if (app()->isLocal()) {
-            $this->call([RunLogsSeeder::class]);
-        }
+        // \App\Models\User::factory(10)->create();
     }
 }

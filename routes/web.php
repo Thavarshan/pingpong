@@ -1,23 +1,18 @@
 <?php
 
-use App\Models\Run;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\RunLogController;
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
+|
+*/
 
 Route::get('/', function () {
-    return view('auth.login');
+    return view('welcome');
 });
-
-Route::group(['middleware' => 'auth'], function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard', [
-            'logs' => Run::latest()->paginate(10),
-        ]);
-    })->name('dashboard');
-
-    Route::get('/logs/{log}', [RunLogController::class, 'destroy'])->name('log.destroy');
-
-    Route::delete('/logs', [RunLogController::class, 'destroyAll'])->name('logs.destroy');
-});
-
-require __DIR__ . '/auth.php';
