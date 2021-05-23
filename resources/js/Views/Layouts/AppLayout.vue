@@ -16,6 +16,10 @@
                         Contacts
                     </navbar-link>
 
+                    <navbar-link :href="route('runs.index')" :active="route().current('runs.index')" class="text-white bg-gray-900 hover:bg-gray-900 focus:bg-gray-900">
+                        Runs
+                    </navbar-link>
+
                     <navbar-link :href="route('api-tokens.index')" :active="route().current('api-tokens.index')" class="text-white bg-gray-900 hover:bg-gray-900 focus:bg-gray-900">
                         Tokens
                     </navbar-link>

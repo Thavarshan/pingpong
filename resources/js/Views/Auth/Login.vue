@@ -43,12 +43,6 @@
                                 Sign in <span class="ml-1">&rarr;</span>
                             </app-button>
                         </div>
-
-                        <div class="mt-6">
-                            <p>
-                                Don't have an account yet? <app-link :href="route('register')">Create account</app-link>.
-                            </p>
-                        </div>
                     </form>
                 </div>
             </div>

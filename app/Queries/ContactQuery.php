@@ -25,8 +25,6 @@ class ContactQuery extends Query
      */
     public function forUser($user): Builder
     {
-        return $this->query()
-            ->where('user_id', $user->id)
-            ->orderByRaw('DATE_FORMAT(birthday, "%m-%d")');
+        return $this->query()->where('user_id', $user->id);
     }
 }

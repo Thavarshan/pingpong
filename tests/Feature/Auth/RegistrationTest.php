@@ -11,6 +11,13 @@ class RegistrationTest extends TestCase implements Postable
 {
     use RefreshDatabase;
 
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $this->markTestSkipped();
+    }
+
     public function testRegistrationScreenCanBeRendered()
     {
         $response = $this->get('/register');

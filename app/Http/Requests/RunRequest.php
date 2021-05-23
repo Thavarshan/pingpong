@@ -13,7 +13,11 @@ class RunRequest extends Request
      */
     public function authorize(): bool
     {
-        return $this->user()->tokenCan('create');
+        if ($this->user()->currentAccessToken()->name === $this->app_name) {
+            return $this->user()->tokenCan('create');
+        }
+
+        return false;
     }
 
     /**

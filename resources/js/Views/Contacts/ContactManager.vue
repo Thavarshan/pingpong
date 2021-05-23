@@ -3,7 +3,7 @@
         <div class="md:col-span-6 xl:col-span-7 xl:col-start-0 xl:col-end-8">
             <scrollbar data-simplebar-auto-hide="true" class="min-h-screen h-screen">
                 <div class="space-y-4">
-                    <div class="rounded-lg bg-gray-50 px-4 py-5 px-6" v-for="contact in contacts.data" :key="contact.id">
+                    <div class="rounded-xl bg-gray-50 px-4 py-5 px-6" v-for="contact in contacts.data" :key="contact.id">
                         <div>
                             <div>
                                 <span class="font-medium text-gray-800">{{ contact.name }}</span>

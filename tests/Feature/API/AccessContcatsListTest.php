@@ -12,6 +12,8 @@ class AccessContcatsListTest extends TestCase
 
     public function testAuthorizedAppsCanAccessContactsList()
     {
+        $this->withoutExceptionHandling();
+
         $user = create(User::class);
         $token = $user->createToken('Birthdays App', ['read']);
 
