@@ -1,0 +1,13 @@
+{
+    "include": ["./resources/js/**/*"],
+    "compilerOptions": {
+        "checkJs": false,
+        "target": "es6",
+        "module": "es2015",
+        "moduleResolution": "node",
+        "sourceMap": true,
+        "allowSyntheticDefaultImports": true,
+        "baseUrl": "."
+    },
+    "exclude": ["node_modules"]
+}
