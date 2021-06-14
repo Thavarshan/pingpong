@@ -18,15 +18,13 @@ class UpdateUserAddress implements UpdateUserInformation
      */
     public function update(User $user, array $data, ?array $options = null): void
     {
-        $user->forceFill([
-            'address' => [
-                'line1' => $data['line1'],
-                'line2' => $data['line2'] ?? null,
-                'city' => $data['city'],
-                'state' => $data['state'],
-                'country' => $data['country'],
-                'postal_code' => $data['postal_code'],
-            ],
-        ])->save();
+        $user->address()->updateOrCreate([
+            'line1' => $data['line1'],
+            'line2' => $data['line2'] ?? null,
+            'city' => $data['city'],
+            'state' => $data['state'],
+            'country' => $data['country'],
+            'postal_code' => $data['postal_code'],
+        ]);
     }
 }

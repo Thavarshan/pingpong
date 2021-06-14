@@ -11,6 +11,13 @@ class Address extends Model
     use HasFactory;
 
     /**
+     * The attributes that aren't mass assignable.
+     *
+     * @var string[]|bool
+     */
+    protected $guarded = [];
+
+    /**
      * Get the parent addressable model (user or post).
      *
      * @return \Illuminate\Database\Eloquent\Relations\MorphTo
