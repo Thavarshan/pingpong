@@ -23,7 +23,7 @@ class CreateNewContact implements CreatesNewResources
     public function create(array $data, ?array $options = null)
     {
         if (! isset($options['user'])) {
-            throw new InvalidArgumentException('Authenticated user not set.');
+            throw new InvalidArgumentException('Authenticated user required.');
         }
 
         return tap($options['user']->contacts(), function (HasMany $contacts) use ($data) {

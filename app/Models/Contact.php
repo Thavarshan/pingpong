@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Emberfuse\Blaze\Models\Traits\Sluggable;
 use Emberfuse\Blaze\Models\Traits\Directable;
 use Emberfuse\Blaze\Models\Traits\Filterable;
+use Emberfuse\Scorch\Models\Traits\HasProfilePhoto;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -17,6 +18,7 @@ class Contact extends Model
     use Directable;
     use Filterable;
     use Addressable;
+    use HasProfilePhoto;
 
     /**
      * The attributes that are mass assignable.
@@ -31,6 +33,7 @@ class Contact extends Model
         'email',
         'user_id',
         'birthday',
+        'profile_photo_path',
         'note',
     ];
 
@@ -49,6 +52,7 @@ class Contact extends Model
      * @var array
      */
     protected $appends = [
+        'profile_photo_url',
         'path',
     ];
 

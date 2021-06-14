@@ -22,6 +22,8 @@ class ContactFilter extends Filter
      */
     protected function birthdays(): Builder
     {
-        return $this->builder->whereDate('birthday', '=', Carbon::today()->toDateString());
+        return $this->builder
+            ->whereMonth('birthday', '=', Carbon::now()->format('m'))
+            ->whereDay('birthday', '=', Carbon::now()->format('d'));
     }
 }

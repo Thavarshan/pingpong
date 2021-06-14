@@ -27,7 +27,7 @@ class CreateNewUser implements CreatesNewUsers
                 $this->filterFillable($data, User::class)
             );
 
-            $user->address()->create();
+            $user->address()->create([]);
 
             return $user;
         });

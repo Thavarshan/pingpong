@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Contact;
 use Illuminate\Database\Seeder;
 
 class ContactSeeder extends Seeder
@@ -13,6 +14,6 @@ class ContactSeeder extends Seeder
      */
     public function run()
     {
-        //
+        create(Contact::class, [], null, 30);
     }
 }

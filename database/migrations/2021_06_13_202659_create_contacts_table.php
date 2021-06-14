@@ -25,6 +25,7 @@ class CreateContactsTable extends Migration
                 ->constrained('users')
                 ->cascadeOnDelete();
             $table->text('note')->nullable();
+            $table->text('profile_photo_path')->nullable();
             $table->timestamps();
         });
     }
