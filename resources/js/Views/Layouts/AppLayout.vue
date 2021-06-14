@@ -4,35 +4,23 @@
 
         <!-- Main Header Area -->
         <header>
-            <navbar class="bg-gray-800">
+            <navbar class="bg-indigo-800">
                 <template #logo>
-                    <logo classes="h-8 w-8" :title="config('app.name')"></logo>
+                    <logo classes="h-8 w-auto text-indigo-300" :title="config('app.name')"></logo>
                 </template>
 
                 <template #linksleft>
-                    <navbar-link :href="route('home')" :active="route().current('home')" class="text-white bg-gray-900 hover:bg-gray-900 focus:bg-gray-900">
-                        Home
-                    </navbar-link>
+                    <!-- N/A -->
                 </template>
 
                 <template #linksright>
-                    <dropdown align="right" class="block md:hidden">
-                        <template #trigger>
-                            <button class="flex text-sm text-gray-500 focus:text-gray-400 active:text-gray-300 border-2 border-transparent rounded-xl focus:outline-none focus:border-transparent transition duration-150 ease-in-out">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
-                                </svg>
-                            </button>
-                        </template>
-
-                        <template #items>
-                            <dropdown-link :href="route('home')" :active="route().current('home')">Home</dropdown-link>
-                        </template>
-                    </dropdown>
+                    <navbar-link :href="route('contacts.create')" :active="route().current('contacts.create')" class="text-white bg-indigo-900 hover:bg-indigo-900 focus:bg-indigo-900">
+                        New contact
+                    </navbar-link>
 
                     <dropdown align="right">
                         <template #trigger>
-                            <button class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300  transition duration-150 ease-in-out">
+                            <button class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-indigo-300  transition duration-150 ease-in-out">
                                 <img :src="$page.props.user.profile_photo_url" class="rounded-full object-cover w-8 h-8" :alt="$page.props.user.name"/>
                             </button>
                         </template>

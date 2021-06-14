@@ -31,15 +31,15 @@ createApp({
             config,
             diffForHumans,
             simple,
-            expanded
-        }
+            expanded,
+        },
     })
     .use(InertiaPlugin)
     .mount(app);
 
 InertiaProgress.init({
     delay: 250,
-    color: '#F97316',
+    color: '#6366F1',
     includeCSS: true,
     showSpinner: false,
 });

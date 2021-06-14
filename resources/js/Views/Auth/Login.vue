@@ -8,7 +8,7 @@
             <div class="max-w-sm">
                 <div>
                     <div class="mb-6 block lg:hidden">
-                        <logo :title="config('app.name')" classes="h-20 w-20"></logo>
+                        <logo-shape :title="config('app.name')" classes="h-10 w-auto text-indigo-600"></logo-shape>
                     </div>
 
                     <h4 class="mt-6 font-semibold text-xl text-gray-800">Login to your account</h4>
@@ -62,7 +62,7 @@ import AppLink from '@/Views/Components/Base/Link';
 import AppInput from '@/Views/Components/Inputs/Input';
 import AppButton from '@/Views/Components/Buttons/Button';
 import Checkbox from '@/Views/Components/Inputs/Checkbox';
-import Logo from '@/Views/Components/Logos/Logo';
+import LogoShape from '@/Views/Components/Logos/LogoShape';
 import Advertisement from './Advertisement.vue';
 
 export default {
@@ -72,7 +72,7 @@ export default {
         AppInput,
         AppButton,
         Checkbox,
-        Logo,
+        LogoShape,
         Advertisement
     },
 

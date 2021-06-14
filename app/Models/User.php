@@ -2,9 +2,11 @@
 
 namespace App\Models;
 
+use App\Models\Traits\Addressable;
 use Illuminate\Notifications\Notifiable;
 use Emberfuse\Scorch\Models\Traits\HasApiTokens;
 use Emberfuse\Scorch\Models\Traits\HasProfilePhoto;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Emberfuse\Scorch\Models\Concerns\InteractsWithSessions;
@@ -14,6 +16,7 @@ class User extends Authenticatable
 {
     use HasFactory;
     use Notifiable;
+    use Addressable;
     use HasApiTokens;
     use HasProfilePhoto;
     use InteractsWithSessions;
@@ -31,7 +34,6 @@ class User extends Authenticatable
         'password',
         'username',
         'settings',
-        'address',
         'locked',
         'profile_photo_path',
         'two_factor_secret',
@@ -59,7 +61,6 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'two_factor_enabled' => 'boolean',
         'settings' => 'array',
-        'address' => 'array',
     ];
 
     /**
@@ -72,4 +73,14 @@ class User extends Authenticatable
         'sessions',
         'two_factor_enabled',
     ];
+
+    /**
+     * Get the user this contact belongs to.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function contacts(): HasMany
+    {
+        return $this->hasMany(Contact::class);
+    }
 }

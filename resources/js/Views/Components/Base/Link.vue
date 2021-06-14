@@ -1,5 +1,5 @@
 <template>
-    <inertia-link @click="$emit('clicked')" :href="href" class="text-gray-800 underline hover:text-gray-700 hover:underline focus:text-gray-700 focus:underline active:text-gray-900 active:underline transition ease-in-out duration-150"><slot></slot></inertia-link>
+    <inertia-link @click="$emit('clicked')" :href="href" class="text-indigo-500 underline-none hover:text-indigo-600 hover:underline-none focus:text-indigo-600 focus:underline-none active:text-indigo-700 active:underline-none transition ease-in-out duration-150"><slot></slot></inertia-link>
 </template>
 
 <script>

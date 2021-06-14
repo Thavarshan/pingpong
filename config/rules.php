@@ -71,4 +71,15 @@ return [
             'different:current_password',
         ],
     ],
+
+    /*
+     * Contact Validation Rules.
+     */
+    'contact' => [
+        'name' => ['required', 'string', 'max:255'],
+        'email' => ['required', 'string', 'email'],
+        'phone' => ['required', 'string'],
+        'company' => ['nullable', 'string'],
+        'birthday' => ['nullable', 'date'],
+    ],
 ];
