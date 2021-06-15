@@ -6,7 +6,7 @@ import {
     plugin as InertiaPlugin,
 } from '@inertiajs/inertia-vue3';
 
-import { diffForHumans, simple, expanded } from './Plugins/moment';
+import { diffForHumans, simple, expanded, birthday } from './Plugins/moment';
 import { InertiaProgress } from '@inertiajs/progress';
 
 axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
@@ -32,6 +32,7 @@ createApp({
             diffForHumans,
             simple,
             expanded,
+            birthday,
         },
     })
     .use(InertiaPlugin)

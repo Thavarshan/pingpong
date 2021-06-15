@@ -23,7 +23,7 @@ class ContactFilter extends Filter
     protected function birthdays(): Builder
     {
         return $this->builder
-            ->whereMonth('birthday', '=', Carbon::now()->format('m'))
-            ->whereDay('birthday', '=', Carbon::now()->format('d'));
+            ->whereMonth('birthday', '=', Carbon::today()->format('m'))
+            ->whereDay('birthday', '=', Carbon::today()->format('d'));
     }
 }
