@@ -18,7 +18,7 @@ class UpdateUserAddress implements UpdateUserInformation
      */
     public function update(User $user, array $data, ?array $options = null): void
     {
-        $user->address()->updateOrCreate([
+        $user->address()->update([
             'line1' => $data['line1'],
             'line2' => $data['line2'] ?? null,
             'city' => $data['city'],

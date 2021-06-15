@@ -75,6 +75,13 @@ class User extends Authenticatable
     ];
 
     /**
+     * The relations to eager load on every query.
+     *
+     * @var array
+     */
+    protected $with = ['address'];
+
+    /**
      * Get the user this contact belongs to.
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany

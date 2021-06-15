@@ -20235,7 +20235,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 var _hoisted_1 = {
-  "class": "bg-gradient-to-br from-indigo-900 to-indigo-700 h-full p-10"
+  "class": "bg-gradient-to-br from-indigo-700 to-indigo-500 h-full p-10"
 };
 
 var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"mt-10 max-w-xs\"><div><h6 class=\"text-white font-bold\">Get started quickly</h6><p class=\"text-indigo-100 text-sm\"> Vivamus pretium, augue sed bibendum placerat, leo ex ornare mauris, eget efficitur leo ex nec odio. </p></div><div class=\"mt-6\"><h6 class=\"text-white font-bold\">Support any business model</h6><p class=\"text-indigo-100 text-sm\"> Suspendisse urna mauris, auctor quis ornare ac, pharetra et ipsum. Sed ac semper est convallis ex ut. </p></div><div class=\"mt-6\"><h6 class=\"text-white font-bold\">Join millions of businesses</h6><p class=\"text-indigo-100 text-sm\"> Donec semper lorem at felis lacinia auctor sed consectetur nulla justo. </p></div></div>", 1);
@@ -21912,7 +21912,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "class": "flex items-center cursor-pointer"
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
     id: $props.id,
-    "class": "form-checkbox rounded border-indigo-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 transition duration-150 ease-in-out",
+    "class": "form-checkbox rounded border-gray-200 text-indigo-600 shadow-sm focus:border-gray-200 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 transition duration-150 ease-in-out",
     value: $props.value,
     "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
       return $options.proxyChecked = $event;

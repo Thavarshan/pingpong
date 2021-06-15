@@ -1,6 +1,6 @@
 <template>
     <label :for="id" class="flex items-center cursor-pointer">
-        <input :id="id" class="form-checkbox rounded border-indigo-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 transition duration-150 ease-in-out" :value="value" v-model="proxyChecked" type="checkbox"/>
+        <input :id="id" class="form-checkbox rounded border-gray-200 text-indigo-600 shadow-sm focus:border-gray-200 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 transition duration-150 ease-in-out" :value="value" v-model="proxyChecked" type="checkbox"/>
 
         <span class="ml-2 text-sm font-medium leading-5">
             <span v-text="label"></span>
