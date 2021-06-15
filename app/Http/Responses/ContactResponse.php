@@ -22,6 +22,6 @@ class ContactResponse extends Response implements Responsable
 
         return $request->method() === 'DELETE'
             ? $this->redirectTo('/contacts', 303)->banner(__('Contact deleted.'))
-            : $this->back(303);
+            : $this->redirectToRoute('contacts.edit', ['contact' => $this->content->slug]);
     }
 }

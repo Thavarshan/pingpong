@@ -25,4 +25,14 @@ class ContactAddressRequest extends Request
     {
         return $this->getRulesFor('address');
     }
+
+    /**
+     * Prepare the data for validation.
+     *
+     * @return void
+     */
+    protected function prepareForValidation(): void
+    {
+        $this->setErrorBag('manageContactAddressInformation');
+    }
 }

@@ -41,5 +41,5 @@ export function expanded(timestamp) {
  * @return {String}
  */
 export function birthday(timestamp) {
-    return moment(timestamp).format('MMMM Do YYYY');
+    return moment(timestamp).format('MMMM Do');
 }

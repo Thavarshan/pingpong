@@ -57,6 +57,23 @@ class Contact extends Model
     ];
 
     /**
+     * The relations to eager load on every query.
+     *
+     * @var array
+     */
+    protected $with = ['address'];
+
+    /**
+     * Get the route key for the model.
+     *
+     * @return string
+     */
+    public function getRouteKeyName(): string
+    {
+        return 'slug';
+    }
+
+    /**
      * Get the user this contact belongs to.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

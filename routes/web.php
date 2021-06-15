@@ -10,5 +10,5 @@ Route::group([
     'middleware' => ['auth:scorch', 'verified'],
 ], function (): void {
     Route::resource('contacts', ContactController::class);
-    Route::post('/contacts/{contact}/address', ContactAddressController::class)->name('contacts.address');
+    Route::post('/contacts/{contact}/address', ContactAddressController::class)->name('contacts-address.update');
 });

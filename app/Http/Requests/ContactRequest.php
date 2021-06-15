@@ -13,7 +13,7 @@ class ContactRequest extends Request
      */
     public function authorize(): bool
     {
-        if ($this->methods() === 'PUT') {
+        if ($this->method() === 'PUT') {
             return $this->isAllowed('manage', $this->route('contact'), false);
         }
 
