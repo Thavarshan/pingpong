@@ -26,8 +26,14 @@ class CreateNewContact implements CreatesNewResources
             throw new InvalidArgumentException('Authenticated user required.');
         }
 
-        return tap($options['user']->contacts(), function (HasMany $contacts) use ($data) {
-            $contacts->create($this->filterFillable($data, Contact::class));
+        return with($options['user']->contacts(), function (HasMany $contacts) use ($data) {
+            $contact = $contacts->create(
+                $this->filterFillable($data, Contact::class)
+            );
+
+            $contact->address()->create([]);
+
+            return $contact;
         });
     }
 }

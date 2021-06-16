@@ -43,7 +43,7 @@ class Contact extends Model
      * @var array
      */
     protected $casts = [
-        'birthday' => 'datetime',
+        'birthday' => 'date:Y-m-d',
     ];
 
     /**

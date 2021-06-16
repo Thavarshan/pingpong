@@ -5,7 +5,7 @@
 
             <section-border></section-border>
 
-            <address-information-form :contact="contact" :address="contact.address || []"></address-information-form>
+            <address-information-form :contact="contact"></address-information-form>
         </div>
     </app-layout>
 </template>

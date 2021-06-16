@@ -52,6 +52,10 @@
                     <div class="mt-6 lg:mt-0 md:col-span-6">
                         <app-input type="tel" v-model="form.phone" :error="form.errors.phone" label="Phone number" placeholder="07xxxxxxxx"></app-input>
                     </div>
+
+                    <div class="mt-6 lg:mt-0 md:col-span-6">
+                        <app-input type="date" v-model="form.birthday" :error="form.errors.birthday" label="Birthday"></app-input>
+                    </div>
                 </div>
 
                 <div class="flex items-center justify-end mt-6">
@@ -69,6 +73,7 @@
 </template>
 
 <script>
+import moment from 'moment';
 import ActionSection from '@/Views/Components/Sections/ActionSection';
 import AppInput from '@/Views/Components/Inputs/Input';
 import AppInputError from '@/Views/Components/Inputs/InputError';
@@ -105,6 +110,7 @@ export default {
                 name: this.contact.name,
                 email: this.contact.email,
                 phone: this.contact.phone,
+                birthday: this.contact.birthday,
                 photo: null
             }),
 
@@ -161,6 +167,10 @@ export default {
             return this.state === 'update'
                 ? this.route('contacts.update', { contact: this.contact })
                 : this.route('contacts.store');
+        },
+
+        toDateString(date) {
+            return moment(date).format('YYYY-MM-DD');
         }
     }
 }

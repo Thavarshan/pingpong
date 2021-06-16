@@ -54,7 +54,15 @@ import AppButton from '@/Views/Components/Buttons/Button';
 import ActionMessage from '@/Views/Components/Alerts/ActionMessage';
 
 export default {
-    props: ['address', 'contact'],
+    props: {
+        contact: {
+            required: false,
+            default: {
+                address: {}
+            },
+            type: Object
+        }
+    },
 
     components: {
         ActionSection,
@@ -67,11 +75,11 @@ export default {
     data() {
         return {
             form: this.$inertia.form({
-                line1: this.address.line1,
-                city: this.address.city,
-                state: this.address.state,
-                country: this.address.country,
-                postal_code: this.address.postal_code,
+                line1: this.contact.address.line1,
+                city: this.contact.address.city,
+                state: this.contact.address.state,
+                country: this.contact.address.country,
+                postal_code: this.contact.address.postal_code,
             }),
         }
     },

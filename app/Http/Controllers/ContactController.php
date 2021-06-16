@@ -71,7 +71,7 @@ class ContactController extends Controller
      */
     public function show(Contact $contact)
     {
-        return Inertia::render('Contacts/Show', compact('contact'));
+        return Inertia::render('Contacts/Edit', compact('contact'));
     }
 
     /**

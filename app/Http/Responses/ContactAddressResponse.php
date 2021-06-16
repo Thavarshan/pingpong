@@ -16,6 +16,8 @@ class ContactAddressResponse extends Response implements Responsable
      */
     public function toResponse($request)
     {
-        return $request->expectsJson() ? $this->json() : $this->redirectTo('/');
+        return $request->expectsJson()
+            ? $this->json($this->content)
+            : $this->back(303);
     }
 }

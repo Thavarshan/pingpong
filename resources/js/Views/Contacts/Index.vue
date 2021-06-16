@@ -2,7 +2,7 @@
     <app-layout>
         <div class="mb-6 md:flex items-center justify-between">
             <div class="w-full md:w-1/2 xl:w-1/3">
-                <app-input class="w-full" type="text" placeholder="Search contact by name..." v-model="searchForm.search" :error="searchForm.errors.search"></app-input>
+                <app-input class="w-full" type="search" placeholder="Search contact by name..." v-model="searchForm.search" :error="searchForm.errors.search"></app-input>
             </div>
 
             <div class="mt-4 md:mt-0">
