@@ -9,7 +9,7 @@ return [
     'guard' => 'web',
 
     /*
-     * Sentinel Password Broker.
+     * Scorch Password Broker.
      */
     'passwords' => 'users',
 
@@ -25,13 +25,13 @@ return [
     'home' => RouteServiceProvider::HOME,
 
     /*
-     * Sentinel Routes Prefix / Subdomain.
+     * Scorch Routes Prefix / Subdomain.
      */
     'prefix' => '',
     'domain' => null,
 
     /*
-     * Sentinel Routes Middleware
+     * Scorch Routes Middleware
      */
     'middleware' => ['web'],
 
@@ -52,7 +52,6 @@ return [
         'login' => true,
         'register' => true,
         'forgot-password' => true,
-        'reset-password' => true,
         'two-factor-challenge' => true,
     ],
 
@@ -66,7 +65,7 @@ return [
      */
     'stateful' => explode(',', env(
         'STATEFUL_DOMAINS',
-        'preflight.test,localhost,localhost:3000,127.0.0.1,127.0.0.1:8000,::1'
+        'blaze.test,localhost,localhost:3000,127.0.0.1,127.0.0.1:8000,::1'
     )),
 
     /*

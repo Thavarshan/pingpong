@@ -3,7 +3,7 @@
 function main() {
     installProject
     # if [ $? -eq 0 ]; then
-    #     php artisan preflight:project
+    #     php artisan blaze:project
     # fi
 }
 

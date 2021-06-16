@@ -3,11 +3,11 @@
 namespace App\Actions\Auth;
 
 use App\Models\User;
+use Emberfuse\Scorch\Support\Util;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-use Cratespace\Sentinel\Support\Util;
-use Cratespace\Sentinel\Support\Traits\Fillable;
-use Cratespace\Sentinel\Contracts\Actions\CreatesNewUsers;
+use Emberfuse\Scorch\Support\Traits\Fillable;
+use Emberfuse\Scorch\Contracts\Actions\CreatesNewUsers;
 
 class CreateNewUser implements CreatesNewUsers
 {
@@ -23,9 +23,13 @@ class CreateNewUser implements CreatesNewUsers
     public function create(array $data, ?array $options = null)
     {
         return DB::transaction(function () use ($data) {
-            return $this->createUser(
+            $user = $this->createUser(
                 $this->filterFillable($data, User::class)
             );
+
+            $user->address()->create([]);
+
+            return $user;
         });
     }
 

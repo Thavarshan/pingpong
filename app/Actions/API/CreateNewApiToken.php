@@ -3,8 +3,8 @@
 namespace App\Actions\API;
 
 use InvalidArgumentException;
-use Cratespace\Preflight\API\Permission;
-use Cratespace\Preflight\Contracts\API\CreatesNewApiTokens;
+use Emberfuse\Blaze\API\Permission;
+use Emberfuse\Blaze\Contracts\Actions\CreatesNewApiTokens;
 
 class CreateNewApiToken implements CreatesNewApiTokens
 {

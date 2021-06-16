@@ -14,6 +14,14 @@ class DefaultUserSeeder extends Seeder
      */
     public function run()
     {
-        User::create(config('defaults.users.credentials'));
+        $user = User::create(config('defaults.users.credentials'));
+
+        $user->address()->create([
+            'line1' => '4431 Birch Street',
+            'city' => 'Greenwood',
+            'state' => 'Indiana',
+            'country' => 'United States',
+            'postal_code' => '46142',
+        ]);
     }
 }

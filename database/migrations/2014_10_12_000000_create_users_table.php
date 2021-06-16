@@ -24,7 +24,6 @@ class CreateUsersTable extends Migration
             $table->text('two_factor_secret')->nullable();
             $table->text('two_factor_recovery_codes')->nullable();
             $table->json('settings')->nullable();
-            $table->json('address')->nullable();
             $table->boolean('locked')->default(false);
             $table->rememberToken();
             $table->timestamps();

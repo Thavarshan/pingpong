@@ -5,7 +5,7 @@ namespace Tests\Feature\Auth;
 use Tests\TestCase;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Cratespace\Preflight\Testing\Contracts\Postable;
+use Emberfuse\Blaze\Testing\Contracts\Postable;
 
 class RegistrationTest extends TestCase implements Postable
 {

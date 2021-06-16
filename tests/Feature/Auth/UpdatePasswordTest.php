@@ -6,7 +6,7 @@ use Tests\TestCase;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Cratespace\Preflight\Testing\Contracts\Postable;
+use Emberfuse\Blaze\Testing\Contracts\Postable;
 
 class UpdatePasswordTest extends TestCase implements Postable
 {

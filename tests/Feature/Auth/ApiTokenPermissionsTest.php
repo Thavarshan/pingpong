@@ -6,7 +6,7 @@ use Tests\TestCase;
 use App\Models\User;
 use Illuminate\Support\Str;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Cratespace\Preflight\Testing\Contracts\Postable;
+use Emberfuse\Blaze\Testing\Contracts\Postable;
 
 class ApiTokenPermissionsTest extends TestCase implements Postable
 {

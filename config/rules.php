@@ -2,7 +2,7 @@
 
 use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Auth\User;
-use Cratespace\Sentinel\Rules\PasswordRule;
+use Emberfuse\Scorch\Rules\PasswordRule;
 
 return [
     /*
@@ -14,9 +14,9 @@ return [
      * User Login Validation Rules.
      */
     'login' => [
-        'email' => ['sometimes', 'string', 'email'],
+        'email' => ['required', 'string', 'email'],
         'password' => ['required', 'string'],
-        'remember' => ['sometimes'],
+        'remember' => ['nullable'],
     ],
 
     /*
@@ -31,7 +31,7 @@ return [
             'max:255',
             Rule::unique(User::class),
         ],
-        'phone' => ['sometimes', 'string', 'regex:/(07)[0-9]{8}/'],
+        'phone' => ['sometimes', 'string'],
         'password' => ['required', 'string', new PasswordRule(), 'confirmed'],
     ],
 
@@ -42,7 +42,7 @@ return [
         'name' => ['required', 'string', 'max:255'],
         'username' => ['required', 'string', 'max:255'],
         'email' => ['required', 'string', 'email'],
-        'phone' => ['sometimes', 'string', 'regex:/(07)[0-9]{8}/'],
+        'phone' => ['sometimes', 'string'],
         'photo' => ['nullable', 'image', 'mimes:jpg,jpeg,png', 'max:1024'],
     ],
 
@@ -70,5 +70,16 @@ return [
             'confirmed',
             'different:current_password',
         ],
+    ],
+
+    /*
+     * Contact Validation Rules.
+     */
+    'contact' => [
+        'name' => ['required', 'string', 'max:255'],
+        'email' => ['required', 'string', 'email'],
+        'phone' => ['required', 'string'],
+        'company' => ['nullable', 'string'],
+        'birthday' => ['nullable', 'date'],
     ],
 ];

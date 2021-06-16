@@ -14,7 +14,7 @@
             leave-from-class="transform opacity-100 scale-100"
             leave-to-class="transform opacity-0 scale-95">
             <div v-show="open" class="absolute z-50 mt-2 rounded-xl shadow-xl overflow-hidden w-44" :class="alignmentClasses" style="display: none;" @click="open = false">
-                <div class="p-2 bg-white">
+                <div class="p-2 bg-white space-y-1">
                     <slot name="items"></slot>
                 </div>
             </div>

@@ -3,8 +3,8 @@
 namespace App\Actions\API;
 
 use App\Models\User;
-use Cratespace\Preflight\API\Permission;
-use Cratespace\Preflight\Contracts\API\UpdatesApiTokens;
+use Emberfuse\Blaze\API\Permission;
+use Emberfuse\Blaze\Contracts\Actions\UpdatesApiTokens;
 
 class UpdateApiToken implements UpdatesApiTokens
 {

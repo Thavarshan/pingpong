@@ -4,9 +4,9 @@ namespace Tests;
 
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
-use Cratespace\Preflight\Testing\Concerns\AuthenticatesUser;
-use Cratespace\Preflight\Testing\Concerns\InteractsWithNetwork;
-use Cratespace\Preflight\Testing\Concerns\InteractsWithProtectedQualities;
+use Emberfuse\Blaze\Testing\Concerns\AuthenticatesUser;
+use Emberfuse\Blaze\Testing\Concerns\InteractsWithNetwork;
+use Emberfuse\Blaze\Testing\Concerns\InteractsWithProtectedQualities;
 
 abstract class TestCase extends BaseTestCase
 {

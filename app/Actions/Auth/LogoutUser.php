@@ -4,7 +4,7 @@ namespace App\Actions\Auth;
 
 use Illuminate\Http\Request;
 use Illuminate\Contracts\Session\Session;
-use Cratespace\Sentinel\Contracts\Actions\LogsoutUsers;
+use Emberfuse\Scorch\Contracts\Actions\LogsoutUsers;
 
 class LogoutUser extends AuthAction implements LogsoutUsers
 {

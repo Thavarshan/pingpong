@@ -1,12 +1,14 @@
 <?php
 
-use Inertia\Inertia;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\ContactAddressController;
 
-Route::get('/', fn () => Inertia::render('Welcome/Show'))->name('welcome');
+Route::get('/', fn () => redirect('/login'))->name('welcome');
 
 Route::group([
-    'middleware' => ['auth:sentinel', 'verified'],
+    'middleware' => ['auth:scorch', 'verified'],
 ], function (): void {
-    Route::get('/home', fn () => Inertia::render('Business/Home'))->name('home');
+    Route::resource('contacts', ContactController::class);
+    Route::post('/contacts/{contact}/address', ContactAddressController::class)->name('contacts-address.update');
 });
