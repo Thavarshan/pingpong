@@ -10,7 +10,7 @@
 
 ## Reporting a Vulnerability
 
-If you discover a security vulnerability within Preflight, please send an email to <Thavarshan Thayananthajothy> (tjthavarshan@gmail.com). All security vulnerabilities will be promptly addressed.
+If you discover a security vulnerability within Blaze, please send an email to <Thavarshan Thayananthajothy> (tjthavarshan@gmail.com). All security vulnerabilities will be promptly addressed.
 
 ### Public PGP Key
 

@@ -3,8 +3,8 @@
 namespace App\Actions\Auth;
 
 use Illuminate\Http\Request;
-use Cratespace\Sentinel\Sentinel\Config;
-use Cratespace\Sentinel\Contracts\Actions\AuthenticatesUsers;
+use Emberfuse\Scorch\Scorch\Config;
+use Emberfuse\Scorch\Contracts\Actions\AuthenticatesUsers;
 
 class AuthenticateUser extends AuthAction implements AuthenticatesUsers
 {

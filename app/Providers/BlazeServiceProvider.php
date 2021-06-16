@@ -5,17 +5,17 @@ namespace App\Providers;
 use App\Actions\API\UpdateApiToken;
 use App\Actions\API\CreateNewApiToken;
 use Illuminate\Support\ServiceProvider;
-use Cratespace\Preflight\API\Permission;
-use Cratespace\Sentinel\Providers\Traits\HasActions;
-use Cratespace\Preflight\Contracts\API\UpdatesApiTokens;
-use Cratespace\Preflight\Contracts\API\CreatesNewApiTokens;
+use Emberfuse\Blaze\API\Permission;
+use Emberfuse\Scorch\Providers\Traits\HasActions;
+use Emberfuse\Blaze\Contracts\Actions\UpdatesApiTokens;
+use Emberfuse\Blaze\Contracts\Actions\CreatesNewApiTokens;
 
-class PreflightServiceProvider extends ServiceProvider
+class BlazeServiceProvider extends ServiceProvider
 {
     use HasActions;
 
     /**
-     * The sentinel action classes.
+     * The scorch action classes.
      *
      * @var array
      */

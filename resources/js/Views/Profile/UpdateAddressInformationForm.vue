@@ -79,7 +79,7 @@ export default {
 
     methods: {
         updateAddressInformation() {
-            this.form.post(this.route('user.address'), {
+            this.form.post(this.route('user-address.update'), {
                 errorBag: 'updateAddressInformation',
                 preserveScroll: true,
             });

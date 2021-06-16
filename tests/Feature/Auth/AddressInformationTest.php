@@ -4,8 +4,8 @@ namespace Tests\Feature\Auth;
 
 use Tests\TestCase;
 use App\Models\User;
+use Emberfuse\Blaze\Testing\Contracts\Postable;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Cratespace\Preflight\Testing\Contracts\Postable;
 
 class AddressInformationTest extends TestCase implements Postable
 {
@@ -13,6 +13,8 @@ class AddressInformationTest extends TestCase implements Postable
 
     public function testAddressInformationCanBeUpdated()
     {
+        $this->withoutExceptionHandling();
+
         $this->signIn($user = create(User::class));
 
         $response = $this->put(
@@ -21,8 +23,8 @@ class AddressInformationTest extends TestCase implements Postable
         );
 
         $response->assertStatus(302);
-        $this->assertEquals('Indiana', $user->fresh()->address['state']);
-        $this->assertEquals('United States', $user->fresh()->address['country']);
+        $this->assertEquals('Indiana', $user->address->state);
+        $this->assertEquals('United States', $user->address->country);
     }
 
     public function testAddressInformationCanBeUpdatedThroughJsonRequest()

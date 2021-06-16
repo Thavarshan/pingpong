@@ -4,7 +4,7 @@ namespace App\Actions\Auth;
 
 use App\Models\User;
 use App\Actions\Auth\Traits\PasswordUpdater;
-use Cratespace\Sentinel\Contracts\Actions\UpdatesUserPasswords;
+use Emberfuse\Scorch\Contracts\Actions\UpdatesUserPasswords;
 
 class UpdateUserPassword implements UpdatesUserPasswords
 {

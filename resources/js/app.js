@@ -6,7 +6,7 @@ import {
     plugin as InertiaPlugin,
 } from '@inertiajs/inertia-vue3';
 
-import diffForHumans from './Plugins/moment';
+import { diffForHumans, simple, expanded, birthday } from './Plugins/moment';
 import { InertiaProgress } from '@inertiajs/progress';
 
 axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
@@ -25,13 +25,22 @@ createApp({
             resolveComponent: (name) => require(`./Views/${name}`).default,
         }),
 })
-    .mixin({ methods: { route, config, diffForHumans } })
+    .mixin({
+        methods: {
+            route,
+            config,
+            diffForHumans,
+            simple,
+            expanded,
+            birthday,
+        },
+    })
     .use(InertiaPlugin)
     .mount(app);
 
 InertiaProgress.init({
     delay: 250,
-    color: '#3B82F6',
+    color: '#6366F1',
     includeCSS: true,
     showSpinner: false,
 });

@@ -4,7 +4,7 @@ namespace App\Actions\Auth;
 
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
-use Cratespace\Sentinel\Contracts\Actions\DeletesUsers;
+use Emberfuse\Scorch\Contracts\Actions\DeletesUsers;
 
 class DeleteUser implements DeletesUsers
 {

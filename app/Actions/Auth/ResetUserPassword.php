@@ -7,7 +7,7 @@ use Illuminate\Auth\Events\PasswordReset;
 use App\Actions\Auth\Traits\PasswordUpdater;
 use Illuminate\Contracts\Auth\StatefulGuard;
 use Illuminate\Contracts\Auth\PasswordBroker;
-use Cratespace\Sentinel\Contracts\Actions\ResetsUserPasswords;
+use Emberfuse\Scorch\Contracts\Actions\ResetsUserPasswords;
 
 class ResetUserPassword implements ResetsUserPasswords
 {
