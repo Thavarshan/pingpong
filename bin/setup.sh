@@ -2,9 +2,9 @@
 
 function main() {
     installProject
-    # if [ $? -eq 0 ]; then
-    #     php artisan blaze:project
-    # fi
+    if [ $? -eq 0 ]; then
+        php artisan blaze:project
+    fi
 }
 
 # Install Composer & JS dependencies, restructure project directories and compile assets.
