@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
 use App\Models\Contact;
 use Illuminate\Database\Seeder;
 
@@ -14,7 +15,9 @@ class ContactSeeder extends Seeder
      */
     public function run()
     {
-        create(Contact::class, [], null, 30)
+        $user = User::whereName(config('defaults.users.credentials.name'))->first();
+
+        create(Contact::class, ['user_id' => $user->id], null, 30)
             ->each(function (Contact $contact) {
                 $contact->address()->create([
                     'line1' => '4431 Birch Street',
