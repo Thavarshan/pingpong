@@ -5,7 +5,7 @@ import {
     App as InertiaApp,
     plugin as InertiaPlugin,
 } from '@inertiajs/inertia-vue3';
-
+import { ZiggyVue } from 'ziggy';
 import { diffForHumans, simple, expanded, birthday } from './Plugins/moment';
 import { InertiaProgress } from '@inertiajs/progress';
 
@@ -27,7 +27,6 @@ createApp({
 })
     .mixin({
         methods: {
-            route,
             config,
             diffForHumans,
             simple,
@@ -36,6 +35,7 @@ createApp({
         },
     })
     .use(InertiaPlugin)
+    .use(ZiggyVue)
     .mount(app);
 
 InertiaProgress.init({

@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use Carbon\Carbon;
 use App\Models\User;
+use App\Models\Address;
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -37,5 +38,29 @@ class UserFactory extends Factory
             'two_factor_secret' => null,
             'two_factor_recovery_codes' => null,
         ];
+    }
+
+    /**
+     * Indicate that the user should have an.
+     *
+     * @return $this
+     */
+    public function withAddress()
+    {
+        return $this->has(
+            Address::factory()
+                ->state(function (array $attributes, User $user) {
+                    return [
+                        'line1' => '4431 Birch Street',
+                        'city' => 'Greenwood',
+                        'state' => 'Indiana',
+                        'country' => 'United States',
+                        'postal_code' => '46142',
+                        'addressable_id' => $user->id,
+                        'addressable_type' => get_class($user),
+                    ];
+                }),
+            'address'
+        );
     }
 }

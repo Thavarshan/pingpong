@@ -15,7 +15,7 @@ class AddressInformationTest extends TestCase implements Postable
     {
         $this->withoutExceptionHandling();
 
-        $this->signIn($user = create(User::class));
+        $this->signIn($user = create(User::class, [], 'withAddress'));
 
         $response = $this->put(
             '/user/profile-address',
@@ -29,7 +29,7 @@ class AddressInformationTest extends TestCase implements Postable
 
     public function testAddressInformationCanBeUpdatedThroughJsonRequest()
     {
-        $this->signIn($user = create(User::class));
+        $this->signIn($user = create(User::class, [], 'withAddress'));
 
         $response = $this->putJson(
             '/user/profile-address',
@@ -43,7 +43,7 @@ class AddressInformationTest extends TestCase implements Postable
 
     public function validStreetNameIsRequired()
     {
-        $this->signIn(create(User::class));
+        $this->signIn(create(User::class, [], 'withAddress'));
 
         $response = $this->put(
             '/user/profile-address',
@@ -58,7 +58,7 @@ class AddressInformationTest extends TestCase implements Postable
 
     public function validCityIsRequired()
     {
-        $this->signIn(create(User::class));
+        $this->signIn(create(User::class, [], 'withAddress'));
 
         $response = $this->put(
             '/user/profile-address',
@@ -73,7 +73,7 @@ class AddressInformationTest extends TestCase implements Postable
 
     public function validStateIsRequired()
     {
-        $this->signIn(create(User::class));
+        $this->signIn(create(User::class, [], 'withAddress'));
 
         $response = $this->put(
             '/user/profile-address',
@@ -88,7 +88,7 @@ class AddressInformationTest extends TestCase implements Postable
 
     public function validPostalCodeIsRequired()
     {
-        $this->signIn(create(User::class));
+        $this->signIn(create(User::class, [], 'withAddress'));
 
         $response = $this->put(
             '/user/profile-address',
@@ -103,7 +103,7 @@ class AddressInformationTest extends TestCase implements Postable
 
     public function validCountryIsRequired()
     {
-        $this->signIn(create(User::class));
+        $this->signIn(create(User::class, [], 'withAddress'));
 
         $response = $this->put(
             '/user/profile-address',
