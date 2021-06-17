@@ -3,21 +3,57 @@
 namespace Tests\Feature\Contacts;
 
 use Tests\TestCase;
+use App\Models\User;
+use App\Models\Contact;
 use Emberfuse\Blaze\Testing\Contracts\Postable;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class UpdateContactAddressTest extends TestCase implements Postable
 {
     use RefreshDatabase;
+    use RefreshDatabase;
 
     /**
-     * A basic feature test example.
+     * The faker user instance.
      *
-     * @return void
+     * @var \App\Models\User
      */
-    public function testExample()
+    protected $user;
+
+    /**
+     * The fake contact instance.
+     *
+     * @var \App\Models\Contact
+     */
+    protected $contact;
+
+    protected function setUp(): void
     {
-        $response = $this->get('/login');
+        parent::setUp();
+
+        $this->signIn($this->user = create(User::class));
+
+        $this->contact = create(Contact::class, ['user_id' => $this->user->id]);
+    }
+
+    public function testUpdateContactAddress()
+    {
+        $response = $this->from($this->contact->path)
+            ->post(
+                "/contacts/{$this->contact->slug}/address",
+                $this->validParameters()
+            );
+
+        $response->assertStatus(303);
+        $response->assertRedirect($this->contact->path);
+    }
+
+    public function testUpdateContactAddressThroughJson()
+    {
+        $response = $this->postJson(
+            "/contacts/{$this->contact->slug}/address",
+            $this->validParameters()
+        );
 
         $response->assertStatus(200);
     }
