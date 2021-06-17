@@ -1,6 +1,6 @@
 [![Inertia.js](https://raw.githubusercontent.com/Thavarshan/pingpong/main/.github/banner.jpg)](https://github.com/Thavarshan/pingpong)
 
-Pingpong is an easy contact manager app with an API for thrid-party connections.
+Pingpong is an easy contact manager web app with an API for thrid-party connections. You can view a demo of the application [here](https://pingpongcontacts.herokuapp.com)
 
 
 ## Contributing
@@ -13,5 +13,5 @@ Please review [our security policy](https://github.com/Thavarshan/pingpong/secur
 
 ## License
 
-Pingpong open-sourced software licensed under the [MIT license](LICENSE).
+Pingpong is open-sourced software licensed under the [MIT license](LICENSE).
 
