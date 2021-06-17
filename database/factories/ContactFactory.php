@@ -29,6 +29,7 @@ class ContactFactory extends Factory
             'slug' => Str::slug($this->faker->unique()->userName()),
             'email' => $this->faker->unique()->safeEmail(),
             'phone' => $this->faker->unique()->phoneNumber(),
+            'company' => $this->faker->unique()->company(),
             'birthday' => Carbon::now()->subYears(20),
             'user_id' => create(User::class)->id,
         ];

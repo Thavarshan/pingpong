@@ -56,6 +56,10 @@
                     <div class="mt-6 lg:mt-0 md:col-span-6">
                         <app-input type="date" v-model="form.birthday" :error="form.errors.birthday" label="Birthday"></app-input>
                     </div>
+
+                    <div class="mt-6 lg:mt-0 md:col-span-8">
+                        <app-input type="text" v-model="form.company" :error="form.errors.company" label="Company" placeholder="Johnathan Doeford"></app-input>
+                    </div>
                 </div>
 
                 <div class="flex items-center justify-end mt-6">
@@ -111,6 +115,7 @@ export default {
                 email: this.contact.email,
                 phone: this.contact.phone,
                 birthday: this.contact.birthday,
+                company: this.contact.company,
                 photo: null
             }),
 

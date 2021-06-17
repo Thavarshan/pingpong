@@ -20,7 +20,7 @@ class CreateContactsTable extends Migration
             $table->string('company')->nullable();
             $table->string('slug')->unique();
             $table->string('email')->unique();
-            $table->date('birthday');
+            $table->date('birthday')->nullable();
             $table->foreignId('user_id')
                 ->constrained('users')
                 ->cascadeOnDelete();
