@@ -19,6 +19,11 @@ class UpdateContactInfomationTest extends TestCase
      */
     protected $user;
 
+    /**
+     * The fake contact instance.
+     *
+     * @var \App\Models\Contact
+     */
     protected $contact;
 
     protected function setUp(): void
