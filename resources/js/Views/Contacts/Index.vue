@@ -72,21 +72,10 @@
                             <div class="text-xs text-gray-500">{{ diffForHumans(contact.birthday, true) }}</div>
                         </td>
 
-                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                            <dropdown align="right">
-                                <template #trigger>
-                                    <button class="flex text-sm text-indigo-500 hover:text-indigo-600 focus:text-indigo-600 active:text-indigo-600 focus:outline-none focus:border-indigo-300 transition duration-150 ease-in-out">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                                            <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
-                                        </svg>
-                                    </button>
-                                </template>
-
-                                <template #items>
-                                    <dropdown-link :href="route('contacts.edit', [contact])" :active="route().current('contacts.edit')">Edit</dropdown-link>
-                                    <dropdown-link @clicked="deleteContact(contact)" href="#">Delete</dropdown-link>
-                                </template>
-                            </dropdown>
+                        <td class="px-6 py-4 whitespace-nowrap text-xs font-medium">
+                            <app-link :href="route('contacts.show', [contact])" :active="route().current('contacts.show')">
+                                Edit
+                            </app-link>
                         </td>
                     </tr>
                 </tbody>

@@ -83,7 +83,7 @@ class ContactController extends Controller
      */
     public function edit(Contact $contact)
     {
-        return Inertia::render('Contacts/Edit', compact('contact'));
+        return $this->show($contact);
     }
 
     /**
