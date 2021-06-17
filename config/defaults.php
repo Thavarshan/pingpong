@@ -11,7 +11,7 @@ return [
         'credentials' => [
             'name' => 'Administrator',
             'username' => 'administrator',
-            'email' => 'admin@blaze.test',
+            'email' => 'admin@pingpong.com',
             'phone' => '0112345678',
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'email_verified_at' => Carbon::now(),

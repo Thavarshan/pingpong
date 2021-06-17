@@ -79,9 +79,9 @@ export default {
     data() {
         return {
             form: this.$inertia.form({
-                email: null,
-                password: null,
-                remember: true
+                email: 'admin@pingpong.com',
+                password: 'password',
+                remember: false
             }),
         }
     },

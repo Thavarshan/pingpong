@@ -26,6 +26,9 @@ class ContactQuery extends Query
      */
     public function personal(ContactFilter $filters): Builder
     {
-        return $this->query()->where('user_id', auth()->id())->filter($filters);
+        return $this->query()
+            ->whereUserId(auth()->id())
+            ->filter($filters)
+            ->orderBy('name');
     }
 }

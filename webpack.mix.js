@@ -1,4 +1,4 @@
-const mix = require("laravel-mix");
+const mix = require('laravel-mix');
 const path = require('path');
 
 mix.js('resources/js/app.js', 'public/js')
@@ -8,7 +8,10 @@ mix.js('resources/js/app.js', 'public/js')
         require('tailwindcss'),
         require('autoprefixer'),
     ])
-    .alias({ '@': path.join(__dirname, 'resources/js') })
+    .alias({
+        '@': path.join(__dirname, 'resources/js'),
+        ziggy: path.resolve('vendor/tightenco/ziggy/dist/vue'),
+    })
     .browserSync('pingpong.test');
 
 if (mix.inProduction()) {

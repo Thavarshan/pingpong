@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use Carbon\Carbon;
+use App\Models\User;
 use App\Models\Contact;
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -29,7 +30,7 @@ class ContactFactory extends Factory
             'email' => $this->faker->unique()->safeEmail(),
             'phone' => $this->faker->unique()->phoneNumber(),
             'birthday' => Carbon::now()->subYears(20),
-            'user_id' => 1,
+            'user_id' => create(User::class)->id,
         ];
     }
 }
