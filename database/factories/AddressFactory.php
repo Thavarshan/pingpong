@@ -23,11 +23,11 @@ class AddressFactory extends Factory
     public function definition()
     {
         return [
-            'line1' => '4431 Birch Street',
-            'city' => 'Greenwood',
-            'state' => 'Indiana',
-            'country' => 'United States',
-            'postal_code' => '46142',
+            'line1' => $this->faker->streetAddress(),
+            'city' => $this->faker->city(),
+            'state' => $this->faker->state(),
+            'postal_code' => $this->faker->postcode(),
+            'country' => $this->faker->country(),
             'addressable_id' => create(User::class)->id,
             'addressable_type' => User::class,
         ];

@@ -1,14 +1,14 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Feature\Contacts;
 
 use Carbon\Carbon;
 use Tests\TestCase;
 use App\Models\User;
-use Emberfuse\Blaze\Testing\Contracts\Postable;
+use App\Models\Contact;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
-class CreateContactTest extends TestCase implements Postable
+class UpdateContactInfomationTest extends TestCase
 {
     use RefreshDatabase;
 
@@ -19,40 +19,42 @@ class CreateContactTest extends TestCase implements Postable
      */
     protected $user;
 
+    protected $contact;
+
     protected function setUp(): void
     {
         parent::setUp();
 
         $this->signIn($this->user = create(User::class));
+
+        $this->contact = create(Contact::class, ['user_id' => $this->user->id]);
     }
 
-    public function testRenderCreateNewContactView()
+    public function testRenderShowContactView()
     {
-        $response = $this->get('/contacts/create');
+        $response = $this->get('/contacts/' . $this->contact->slug);
 
         $response->assertStatus(200);
     }
 
-    public function testCreateNewContact()
+    public function testUpdateContactInformation()
     {
-        $response = $this->from('/contacts/create')
-            ->post('/contacts', $this->validParameters());
+        $response = $this->put('/contacts/' . $this->contact->slug, $this->validParameters());
 
         $response->assertStatus(303);
         $response->assertSessionHasNoErrors();
     }
 
-    public function testCreateNewContactThroughJson()
+    public function testUpdateContactInformationThroughJson()
     {
-        $response = $this->postJson('/contacts', $this->validParameters());
+        $response = $this->putJson('/contacts/' . $this->contact->slug, $this->validParameters());
 
         $response->assertStatus(200);
     }
 
     public function testValidNameIsRequired()
     {
-        $response = $this->from('/contacts/create')
-            ->post('/contacts', $this->validParameters([
+        $response = $this->put('/contacts/' . $this->contact->slug, $this->validParameters([
                 'name' => '',
             ]));
 
@@ -62,8 +64,7 @@ class CreateContactTest extends TestCase implements Postable
 
     public function testValidEmailIsRequired()
     {
-        $response = $this->from('/contacts/create')
-            ->post('/contacts', $this->validParameters([
+        $response = $this->put('/contacts/' . $this->contact->slug, $this->validParameters([
                 'email' => '',
             ]));
 
@@ -73,8 +74,7 @@ class CreateContactTest extends TestCase implements Postable
 
     public function testValidPhoneIsRequired()
     {
-        $response = $this->from('/contacts/create')
-            ->post('/contacts', $this->validParameters([
+        $response = $this->put('/contacts/' . $this->contact->slug, $this->validParameters([
                 'phone' => '',
             ]));
 
@@ -84,8 +84,7 @@ class CreateContactTest extends TestCase implements Postable
 
     public function testBirthdayIsOptional()
     {
-        $response = $this->from('/contacts/create')
-            ->post('/contacts', $this->validParameters([
+        $response = $this->put('/contacts/' . $this->contact->slug, $this->validParameters([
                 'birthday' => '',
             ]));
 
@@ -95,8 +94,7 @@ class CreateContactTest extends TestCase implements Postable
 
     public function testCompanyNameIsOptional()
     {
-        $response = $this->from('/contacts/create')
-            ->post('/contacts', $this->validParameters([
+        $response = $this->put('/contacts/' . $this->contact->slug, $this->validParameters([
                 'company' => '',
             ]));
 
@@ -105,7 +103,7 @@ class CreateContactTest extends TestCase implements Postable
     }
 
     /**
-     * Provide only the necessary paramertes for a POST-able type request.
+     * Provide only the necessary paramertes for a put-able type request.
      *
      * @param array $overrides
      *

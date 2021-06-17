@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Feature\Contacts;
 
 use Tests\TestCase;
 use Emberfuse\Blaze\Testing\Contracts\Postable;
